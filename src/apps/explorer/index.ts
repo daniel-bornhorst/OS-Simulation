@@ -12,12 +12,15 @@ const PLACES = [
   { label: 'Desktop', glyph: 'desktop', path: `${HOME}/Desktop` },
   { label: 'Documents', glyph: 'documents', path: `${HOME}/Documents` },
   { label: 'Pictures', glyph: 'pictures', path: `${HOME}/Pictures` },
+  { label: 'Music', glyph: 'music', path: `${HOME}/Music` },
+  { label: 'Videos', glyph: 'videos', path: `${HOME}/Videos` },
   { label: 'Downloads', glyph: 'downloads', path: `${HOME}/Downloads` },
   { label: 'Computer', glyph: 'drive', path: '/' },
 ];
 
 function formatSize(node: FSNode): string {
-  if (node.type === 'dir') return '—';
+  // URL-backed media: the bytes live elsewhere, so the size isn't known.
+  if (node.type === 'dir' || node.url !== undefined) return '—';
   const bytes = (node.content ?? '').length;
   if (bytes < 1024) return `${bytes} B`;
   if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
@@ -28,6 +31,8 @@ function kindOf(node: FSNode): string {
   if (node.type === 'dir') return 'Folder';
   if (node.name.endsWith('.app')) return 'Application';
   if (node.mime?.startsWith('image/')) return 'Image';
+  if (node.mime?.startsWith('audio/')) return 'Audio';
+  if (node.mime?.startsWith('video/')) return 'Video';
   if (node.mime?.startsWith('text/')) return 'Text document';
   return 'File';
 }
@@ -205,7 +210,7 @@ export const explorerApp: AppDefinition = {
           { label: 'Open', glyph: 'open', action: () => open(path) },
           isDir
             ? { label: 'Open in New Window', action: () => os.launch('explorer', { path }) }
-            : { label: 'Open in Text Editor', action: () => os.launch('editor', { path }) },
+            : { label: 'Open in Text Editor', disabled: os.fs.stat(path)?.url !== undefined, action: () => os.launch('editor', { path }) },
           ...(isDir ? [{ label: 'Open in Terminal', action: () => os.launch('terminal', { path }) }] : []),
           { separator: true },
           { label: 'Rename', shortcut: 'F2', action: () => renameItem(os, path) },

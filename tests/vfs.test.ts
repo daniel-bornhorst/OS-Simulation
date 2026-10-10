@@ -19,7 +19,7 @@ describe('resolvePath', () => {
 describe('VirtualFS', () => {
   it('is seeded with a home folder structure', () => {
     const fs = freshFS();
-    expect(fs.list(HOME).map((n) => n.name)).toEqual(['Desktop', 'Documents', 'Downloads', 'Pictures']);
+    expect(fs.list(HOME).map((n) => n.name)).toEqual(['Desktop', 'Documents', 'Downloads', 'Music', 'Pictures', 'Videos']);
     expect(fs.read(`${HOME}/Desktop/Welcome.txt`)).toContain('Welcome to WebOS');
   });
 
@@ -113,6 +113,19 @@ describe('VirtualFS', () => {
     fs.write('/tmp/a.txt', '');
     fs.move('/tmp/a.txt', HOME);
     expect(changes).toEqual([['/tmp'], ['/tmp', HOME]]);
+  });
+
+  it('stores binary files by URL', () => {
+    const fs = freshFS();
+    fs.writeUrl(`${HOME}/Music/song.mp3`, '/assets/song.mp3');
+    expect(fs.stat(`${HOME}/Music/song.mp3`)?.mime).toBe('audio/mpeg');
+    expect(fs.source(`${HOME}/Music/song.mp3`)).toBe('/assets/song.mp3');
+    expect(() => fs.read(`${HOME}/Music/song.mp3`)).toThrow(/binary file/);
+    fs.copy(`${HOME}/Music/song.mp3`, '/tmp/copy.mp3');
+    expect(fs.source('/tmp/copy.mp3')).toBe('/assets/song.mp3');
+    // Writing text over it turns it back into a normal file.
+    fs.write('/tmp/copy.mp3', 'text');
+    expect(fs.read('/tmp/copy.mp3')).toBe('text');
   });
 
   it('loads from a storage adapter instead of seeding', () => {

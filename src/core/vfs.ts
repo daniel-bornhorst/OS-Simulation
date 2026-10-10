@@ -23,7 +23,24 @@ const MIME_BY_EXT: Record<string, string> = {
   jpg: 'image/jpeg',
   jpeg: 'image/jpeg',
   gif: 'image/gif',
+  csv: 'text/csv',
+  log: 'text/plain',
   svg: 'image/svg+xml',
+  webp: 'image/webp',
+  avif: 'image/avif',
+  bmp: 'image/bmp',
+  mp3: 'audio/mpeg',
+  wav: 'audio/wav',
+  ogg: 'audio/ogg',
+  oga: 'audio/ogg',
+  m4a: 'audio/mp4',
+  aac: 'audio/aac',
+  flac: 'audio/flac',
+  mp4: 'video/mp4',
+  m4v: 'video/mp4',
+  webm: 'video/webm',
+  ogv: 'video/ogg',
+  mov: 'video/quicktime',
   app: 'application/x-app',
 };
 
@@ -116,10 +133,22 @@ export class VirtualFS {
       );
   }
 
+  /** Text content of a file. Fails for URL-backed binary files; use `source` for those. */
   read(path: string): string {
     const node = this.require(path);
     if (node.type === 'dir') throw new FSError(`${path}: Is a directory`);
+    if (node.url !== undefined) throw new FSError(`${path}: binary file`);
     return node.content ?? '';
+  }
+
+  /**
+   * Something a browser can load (an `<img>`/`<audio>`/`<video>` src): the file's
+   * URL if it has one, otherwise its content (e.g. a data: URL saved by Paint).
+   */
+  source(path: string): string {
+    const node = this.require(path);
+    if (node.type === 'dir') throw new FSError(`${path}: Is a directory`);
+    return node.url ?? node.content ?? '';
   }
 
   /** Returns `base`, or `base (2)`, `base (3)`… — whichever is free in `dir`. */
@@ -142,6 +171,7 @@ export class VirtualFS {
     if (existing) {
       if (existing.type === 'dir') throw new FSError(`${path}: Is a directory`);
       existing.content = content;
+      delete existing.url;
       existing.modified = Date.now();
       if (mime) existing.mime = mime;
     } else {
@@ -152,6 +182,23 @@ export class VirtualFS {
       node.content = content;
       node.mime = mime ?? mimeFor(name);
     }
+    this.changed(path, [dirname(path)]);
+  }
+
+  /** Create or replace a binary file whose bytes are loaded from `url`. */
+  writeUrl(path: string, url: string, mime?: string): void {
+    path = resolvePath('/', path);
+    let node = this.lookup(path);
+    if (node?.type === 'dir') throw new FSError(`${path}: Is a directory`);
+    if (!node) {
+      const name = basename(path);
+      validateName(name);
+      node = this.newNode(name, 'file', this.requireDir(dirname(path)).id);
+    }
+    delete node.content;
+    node.url = url;
+    node.mime = mime ?? mimeFor(node.name);
+    node.modified = Date.now();
     this.changed(path, [dirname(path)]);
   }
 
@@ -246,6 +293,7 @@ export class VirtualFS {
     const clone = (n: FSNode, parentId: string, newName: string) => {
       const copy = this.newNode(newName, n.type, parentId);
       copy.content = n.content;
+      copy.url = n.url;
       copy.mime = n.mime;
       for (const child of this.children(n.id)) clone(child, copy.id, child.name);
     };

@@ -9,6 +9,12 @@ npm test        # Vitest: filesystem, terminal, calculator
 npm run build
 ```
 
+## Adding files
+
+Put photos, audio, video and text in [`content/`](content/README.md), mirroring the OS path
+(`content/home/user/Music/song.mp3` → `~/Music/song.mp3`). They're loaded into the filesystem at boot.
+Audio and video open in the Media Player, photos in Paint, text in the Text Editor.
+
 ## Layout
 
 - `src/core/`: OS kernel. `vfs.ts` (in-memory filesystem behind a `StorageAdapter`), `windowManager.ts`, `appRegistry.ts`, `themeManager.ts`, `os.ts`, `seed.ts`

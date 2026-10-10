@@ -312,7 +312,9 @@ export class TerminalSession {
           args
             .map((p) => {
               const node = this.fs.stat(this.resolve(p));
-              if (node?.mime?.startsWith('image/')) throw new CommandError(`${p}: binary file (try: open ${p})`);
+              if (node?.url !== undefined || /^(image|audio|video)\//.test(node?.mime ?? '')) {
+                throw new CommandError(`${p}: binary file (try: open ${p})`);
+              }
               return this.fs.read(this.resolve(p));
             })
             .join('\n'),

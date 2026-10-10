@@ -27,7 +27,7 @@ export const paintApp: AppDefinition = {
   id: 'paint',
   name: 'Paint',
   icon: 'paint',
-  fileTypes: ['png', 'jpg', 'jpeg', 'gif', 'svg'],
+  fileTypes: ['png', 'jpg', 'jpeg', 'gif', 'svg', 'webp', 'avif', 'bmp'],
   defaultSize: { width: 820, height: 580 },
   minSize: { width: 480, height: 320 },
 
@@ -144,9 +144,9 @@ export const paintApp: AppDefinition = {
     }
 
     function load(p: string) {
-      const data = os.tryFS(() => os.fs.read(p));
+      const data = os.tryFS(() => os.fs.source(p));
       if (data === undefined) return;
-      if (!data.startsWith('data:image/')) {
+      if (!os.fs.stat(p)?.mime?.startsWith('image/') || !data) {
         alertDialog('Paint', `${basename(p)} is not an image Paint can open.`);
         return;
       }

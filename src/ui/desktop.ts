@@ -123,7 +123,7 @@ export function mountDesktop(surface: HTMLElement, os: OS, opts: DesktopOptions 
       select(path);
       return [
         { label: 'Open', glyph: 'open', action: () => os.openPath(path) },
-        ...(el.dataset.type === 'file' && !path.endsWith('.app')
+        ...(el.dataset.type === 'file' && !path.endsWith('.app') && os.fs.stat(path)?.url === undefined
           ? [{ label: 'Open in Text Editor', action: () => os.launch('editor', { path }) }]
           : []),
         { separator: true },

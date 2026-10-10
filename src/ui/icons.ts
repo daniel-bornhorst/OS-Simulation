@@ -18,6 +18,20 @@ const ICONS: Record<string, string> = {
     <rect x="5" y="8" width="38" height="32" rx="4" fill="#4f9cf5"/>
     <circle cx="16" cy="18" r="4" fill="#ffe28a"/>
     <path d="M5 34l11-11 8 8 6-6 13 13v2a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4z" fill="#2f6fd0"/>`,
+  audio: `
+    <path d="M12 4h17l9 9v29a2 2 0 0 1-2 2H12a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" fill="#fde7f3" stroke="#d48bb4" stroke-width="1.5"/>
+    <path d="M29 4v9h9" fill="#f7cde4" stroke="#d48bb4" stroke-width="1.5" stroke-linejoin="round"/>
+    <path d="M21 33V20l10-2v12" fill="none" stroke="#c2387f" stroke-width="2.5" stroke-linejoin="round"/>
+    <circle cx="18.5" cy="33" r="3" fill="#c2387f"/><circle cx="28.5" cy="30" r="3" fill="#c2387f"/>`,
+  video: `
+    <rect x="5" y="9" width="38" height="30" rx="4" fill="#5b4bd6"/>
+    <path d="M5 15h38M5 33h38" stroke="#3b2fa8" stroke-width="2"/>
+    <path d="M9 11v2M15 11v2M21 11v2M27 11v2M33 11v2M39 11v2M9 35v2M15 35v2M21 35v2M27 35v2M33 35v2M39 35v2" stroke="#c9c2ff" stroke-width="2"/>
+    <path d="M21 19.5v9l8-4.5z" fill="#fff"/>`,
+  media: `
+    <rect x="4" y="4" width="40" height="40" rx="10" fill="#ff3b6b"/>
+    <circle cx="24" cy="24" r="12" fill="#fff" opacity=".95"/>
+    <path d="M21 18.5v11l9-5.5z" fill="#ff3b6b"/>`,
   app: `
     <rect x="6" y="6" width="36" height="36" rx="9" fill="#7c8597"/>
     <rect x="15" y="15" width="18" height="18" rx="4" fill="#fff" opacity=".9"/>`,
@@ -67,6 +81,15 @@ const GLYPHS: Record<string, string> = {
   desktop: `<rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8M12 16v4"/>`,
   documents: `<path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 12h5M10 16h5"/>`,
   pictures: `<rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="M3 17l5-5 4 4 3-3 6 6"/>`,
+  music: `<path d="M9 18V6l11-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/>`,
+  videos: `<rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3"/>`,
+  play: `<path d="M7 4.5v15l12-7.5z" fill="currentColor"/>`,
+  pause: `<path d="M7 5h3v14H7zM14 5h3v14h-3z" fill="currentColor"/>`,
+  previous: `<path d="M18 5v14l-9-7zM6 5v14" fill="currentColor"/>`,
+  next: `<path d="M6 5v14l9-7zM18 5v14" fill="currentColor"/>`,
+  volume: `<path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/>`,
+  mute: `<path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><path d="M17 9.5l5 5M22 9.5l-5 5"/>`,
+  fullscreen: `<path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/>`,
   downloads: `<path d="M12 4v11M7 10l5 5 5-5M5 20h14"/>`,
   drive: `<rect x="3" y="13" width="18" height="7" rx="2"/><path d="M5 13l2-8h10l2 8M17 16.5h.01"/>`,
   brush: `<path d="M18 3l3 3-9 9-3-3zM9 12c-3 0-4 2-4 4s-1 3-2 3c2 2 8 2 9-3"/>`,
@@ -107,6 +130,8 @@ export function iconNameFor(node: FSNode, appIcon: (appId: string) => string | u
   const ext = extname(node.name);
   if (ext === 'app') return appIcon((node.content ?? '').trim()) ?? 'app';
   if (node.mime?.startsWith('image/')) return 'image';
+  if (node.mime?.startsWith('audio/')) return 'audio';
+  if (node.mime?.startsWith('video/')) return 'video';
   if (['txt', 'md', 'json', 'js', 'ts', 'html', 'css', ''].includes(ext) || node.mime?.startsWith('text/')) return 'text';
   return 'file';
 }

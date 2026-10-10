@@ -7,6 +7,11 @@ export interface FSNode {
   parentId: string | null;
   mime?: string;
   content?: string;
+  /**
+   * For binary files (photos, audio, video): where the bytes live. Set instead of
+   * `content` so large media isn't held as a string in memory.
+   */
+  url?: string;
   created: number;
   modified: number;
 }

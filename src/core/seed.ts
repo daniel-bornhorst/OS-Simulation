@@ -13,7 +13,7 @@ const svgDataUrl = (svg: string) => `data:image/svg+xml;charset=utf-8,${encodeUR
 
 /** The filesystem every fresh session starts from. */
 export function seedFilesystem(fs: VirtualFS): void {
-  for (const dir of ['/bin', '/etc', '/tmp', `${HOME}/Desktop`, `${HOME}/Documents/Projects`, `${HOME}/Pictures`, `${HOME}/Downloads`]) {
+  for (const dir of ['/bin', '/etc', '/tmp', `${HOME}/Desktop`, `${HOME}/Documents/Projects`, `${HOME}/Pictures`, `${HOME}/Music`, `${HOME}/Videos`, `${HOME}/Downloads`]) {
     fs.mkdir(dir, { recursive: true });
   }
 
@@ -35,6 +35,7 @@ export function seedFilesystem(fs: VirtualFS): void {
       '  • Right-click the desktop to create files and folders.',
       '  • Open Files to browse the folder structure; drag items onto folders to move them.',
       '  • Open the Terminal and type `help`.',
+      '  • Play audio and video from ~/Music and ~/Videos in the Media Player.',
       '  • Change the look in Settings: Modern, Retro or macOS.',
       '',
       'Note: everything resets when you reload the page.',

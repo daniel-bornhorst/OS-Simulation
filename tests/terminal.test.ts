@@ -51,7 +51,7 @@ describe('TerminalSession', () => {
 
   it('lists directories', () => {
     const { run } = setup();
-    expect(run('ls')).toBe('Desktop/  Documents/  Downloads/  Pictures/');
+    expect(run('ls')).toBe('Desktop/  Documents/  Downloads/  Music/  Pictures/  Videos/');
     expect(run('ls -l Documents')).toMatch(/^d .*Projects\/\n- .*notes\.txt\n- .*todo\.txt$/);
   });
 

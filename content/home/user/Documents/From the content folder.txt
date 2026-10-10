@@ -1,0 +1,3 @@
+This file was added through the content/ folder in the repo.
+
+Anything you put in content/home/user/... shows up at the same place in WebOS.
