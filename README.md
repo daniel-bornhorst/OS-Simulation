@@ -22,3 +22,9 @@ npm run build
 - **New app:** export an `AppDefinition` and register it in `src/main.ts`.
 - **New shell (e.g. iOS):** implement `Shell` in `src/shells/shell.ts`, add tokens for its `[data-theme]`, register it in `main.ts`.
 - **Persistence:** implement `StorageAdapter` (`load`/`save` of the node list, e.g. with localStorage) and pass it instead of `MemoryAdapter`.
+
+## Deploying
+
+Pushing to `main` runs `.github/workflows/deploy.yml`, which tests, builds and publishes `dist/` to GitHub Pages
+(repo Settings → Pages → Source: **GitHub Actions**). The site is served at
+`https://daniel-bornhorst.github.io/OS-Simulation/`.
