@@ -1,0 +1,182 @@
+/*
+ * Design tokens. Apps and shared UI only use these variables, so each theme
+ * restyles everything by redefining them under its [data-theme].
+ */
+
+:root,
+[data-theme='modern'] {
+  --font: 'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Code', SFMono-Regular, Menlo, Consolas, monospace;
+  --radius: 10px;
+  --radius-sm: 6px;
+
+  --fg: #1c1f24;
+  --fg-muted: #67707d;
+  --bg-window: #f9fafb;
+  --panel-bg: #f1f3f6;
+  --sidebar-bg: #eef1f5;
+  --input-bg: #ffffff;
+  --border: rgba(0, 0, 0, 0.1);
+  --hover-bg: rgba(0, 0, 0, 0.05);
+  --selection-bg: #dce8fd;
+  --selection-fg: #10316b;
+  --accent: #2563eb;
+  --accent-fg: #ffffff;
+  --focus-ring: rgba(37, 99, 235, 0.3);
+  --btn-bg: #ffffff;
+  --btn-hover-bg: #f3f4f6;
+
+  --titlebar-bg: #eef1f5;
+  --titlebar-fg: #1c1f24;
+  --titlebar-inactive-fg: #8b93a0;
+  --window-border: rgba(0, 0, 0, 0.12);
+  --window-shadow: 0 12px 40px rgba(0, 0, 0, 0.22), 0 2px 8px rgba(0, 0, 0, 0.12);
+  --window-shadow-inactive: 0 6px 20px rgba(0, 0, 0, 0.14);
+
+  --menu-bg: rgba(250, 250, 252, 0.92);
+  --menu-fg: #1c1f24;
+  --taskbar-bg: rgba(243, 245, 249, 0.82);
+  --wallpaper: radial-gradient(ellipse at 20% 10%, #6a8dff 0%, transparent 55%),
+    radial-gradient(ellipse at 90% 90%, #b06ab3 0%, transparent 50%), linear-gradient(135deg, #3a7bd5, #4b4bc3);
+
+  --term-bg: #1e1e2e;
+  --term-fg: #cdd6f4;
+  --term-accent: #a6e3a1;
+  --term-dim: #8a8fa8;
+  --calc-bg: #f1f3f6;
+  --calc-screen-bg: #ffffff;
+  --calc-screen-fg: #1c1f24;
+  --calc-key-bg: #ffffff;
+  --calc-fn-bg: #e4e7ec;
+  --paint-stage-bg: #d9dde3;
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-theme='modern'] {
+    --fg: #e8eaed;
+    --fg-muted: #9aa0a9;
+    --bg-window: #202226;
+    --panel-bg: #2a2d32;
+    --sidebar-bg: #25282c;
+    --input-bg: #1b1d20;
+    --border: rgba(255, 255, 255, 0.1);
+    --hover-bg: rgba(255, 255, 255, 0.07);
+    --selection-bg: #24406e;
+    --selection-fg: #e3edff;
+    --accent: #4c8dff;
+    --focus-ring: rgba(76, 141, 255, 0.35);
+    --btn-bg: #2f3237;
+    --btn-hover-bg: #383c42;
+    --titlebar-bg: #2a2d32;
+    --titlebar-fg: #e8eaed;
+    --titlebar-inactive-fg: #7d838c;
+    --window-border: rgba(255, 255, 255, 0.1);
+    --menu-bg: rgba(40, 42, 47, 0.94);
+    --menu-fg: #e8eaed;
+    --taskbar-bg: rgba(32, 34, 38, 0.82);
+    --wallpaper: radial-gradient(ellipse at 20% 10%, #2a3f8f 0%, transparent 55%),
+      radial-gradient(ellipse at 90% 90%, #5b2a6e 0%, transparent 50%), linear-gradient(135deg, #10172e, #1b1440);
+    --calc-bg: #202226;
+    --calc-screen-bg: #1b1d20;
+    --calc-screen-fg: #e8eaed;
+    --calc-key-bg: #33363c;
+    --calc-fn-bg: #44484f;
+    --paint-stage-bg: #17181b;
+  }
+}
+
+[data-theme='retro'] {
+  --font: Tahoma, 'MS Sans Serif', Geneva, Verdana, sans-serif;
+  --font-mono: 'Courier New', Courier, monospace;
+  --radius: 0;
+  --radius-sm: 0;
+
+  --fg: #000000;
+  --fg-muted: #404040;
+  --bg-window: #c0c0c0;
+  --panel-bg: #c0c0c0;
+  --sidebar-bg: #c0c0c0;
+  --input-bg: #ffffff;
+  --border: #808080;
+  --hover-bg: transparent;
+  --selection-bg: #000080;
+  --selection-fg: #ffffff;
+  --accent: #000080;
+  --accent-fg: #ffffff;
+  --focus-ring: transparent;
+  --btn-bg: #c0c0c0;
+  --btn-hover-bg: #c0c0c0;
+
+  --titlebar-bg: linear-gradient(90deg, #000080, #1084d0);
+  --titlebar-fg: #ffffff;
+  --titlebar-inactive-fg: #c0c0c0;
+  --window-border: transparent;
+  --window-shadow: none;
+  --window-shadow-inactive: none;
+
+  --menu-bg: #c0c0c0;
+  --menu-fg: #000000;
+  --taskbar-bg: #c0c0c0;
+  --wallpaper: #008080;
+
+  --term-bg: #000000;
+  --term-fg: #c0c0c0;
+  --term-accent: #c0c0c0;
+  --term-dim: #808080;
+  --calc-bg: #c0c0c0;
+  --calc-screen-bg: #ffffff;
+  --calc-screen-fg: #000000;
+  --calc-key-bg: #c0c0c0;
+  --calc-fn-bg: #c0c0c0;
+  --paint-stage-bg: #808080;
+
+  --bevel-raised: inset -1px -1px #0a0a0a, inset 1px 1px #ffffff, inset -2px -2px #808080, inset 2px 2px #dfdfdf;
+  --bevel-sunken: inset -1px -1px #ffffff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px #808080;
+  --bevel-field: inset -1px -1px #ffffff, inset 1px 1px #808080, inset -2px -2px #dfdfdf, inset 2px 2px #0a0a0a;
+}
+
+[data-theme='mac'] {
+  --font: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-mono: 'SF Mono', SFMono-Regular, Menlo, Monaco, monospace;
+  --radius: 11px;
+  --radius-sm: 6px;
+
+  --fg: #1d1d1f;
+  --fg-muted: #6e6e73;
+  --bg-window: #ffffff;
+  --panel-bg: #f5f5f7;
+  --sidebar-bg: rgba(232, 232, 237, 0.9);
+  --input-bg: #ffffff;
+  --border: rgba(0, 0, 0, 0.1);
+  --hover-bg: rgba(0, 0, 0, 0.05);
+  --selection-bg: #0a84ff;
+  --selection-fg: #ffffff;
+  --accent: #0a84ff;
+  --accent-fg: #ffffff;
+  --focus-ring: rgba(10, 132, 255, 0.35);
+  --btn-bg: #ffffff;
+  --btn-hover-bg: #f2f2f4;
+
+  --titlebar-bg: linear-gradient(#ececec, #e2e2e2);
+  --titlebar-fg: #3a3a3c;
+  --titlebar-inactive-fg: #a6a6a8;
+  --window-border: rgba(0, 0, 0, 0.22);
+  --window-shadow: 0 22px 60px rgba(0, 0, 0, 0.3), 0 0 0 0.5px rgba(0, 0, 0, 0.2);
+  --window-shadow-inactive: 0 10px 30px rgba(0, 0, 0, 0.18);
+
+  --menu-bg: rgba(242, 242, 245, 0.88);
+  --menu-fg: #1d1d1f;
+  --wallpaper: radial-gradient(ellipse at 15% 85%, #ff9a8b 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 15%, #6dd5ed 0%, transparent 55%), linear-gradient(160deg, #f7797d, #c471ed 55%, #12c2e9);
+
+  --term-bg: #ffffff;
+  --term-fg: #1d1d1f;
+  --term-accent: #1d1d1f;
+  --term-dim: #8e8e93;
+  --calc-bg: #2c2c2e;
+  --calc-screen-bg: transparent;
+  --calc-screen-fg: #ffffff;
+  --calc-key-bg: #5a5a5e;
+  --calc-fn-bg: #3d3d40;
+  --paint-stage-bg: #e5e5ea;
+}

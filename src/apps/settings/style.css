@@ -1,0 +1,92 @@
+.settings {
+  height: 100%;
+  overflow: auto;
+  padding: 18px 22px 24px;
+}
+.settings h2 { font-size: 15px; margin: 18px 0 8px; }
+.settings h2:first-child { margin-top: 0; }
+.settings-hint { margin: 0 0 10px; color: var(--fg-muted); font-size: 13px; }
+.settings-themes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 12px;
+}
+.settings-theme {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px;
+  text-align: left;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--panel-bg);
+  color: var(--fg);
+  font: inherit;
+  cursor: pointer;
+}
+.settings-theme:disabled { opacity: 0.5; cursor: default; }
+.settings-theme.is-active { border-color: var(--accent); }
+.settings-theme-label { font-weight: 600; font-size: 13px; }
+.settings-theme-desc { font-size: 11px; color: var(--fg-muted); line-height: 1.35; }
+
+.theme-preview {
+  position: relative;
+  height: 70px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.theme-preview .tp-window {
+  position: absolute;
+  left: 22%;
+  top: 20%;
+  width: 56%;
+  height: 50%;
+  background: #fff;
+  border-radius: 4px;
+}
+.theme-preview .tp-title { height: 8px; }
+.theme-preview .tp-bar { position: absolute; left: 0; right: 0; }
+.theme-preview-modern { background: linear-gradient(135deg, #3a7bd5, #6a5acd); }
+.theme-preview-modern .tp-bar { bottom: 0; height: 10px; background: rgba(255, 255, 255, 0.7); }
+.theme-preview-modern .tp-title { background: #eef1f6; }
+.theme-preview-retro { background: #008080; }
+.theme-preview-retro .tp-bar { bottom: 0; height: 9px; background: #c0c0c0; border-top: 1px solid #fff; }
+.theme-preview-retro .tp-window { background: #c0c0c0; border-radius: 0; border: 1px solid #fff; border-right-color: #000; border-bottom-color: #000; }
+.theme-preview-retro .tp-title { background: linear-gradient(90deg, #000080, #1084d0); }
+.theme-preview-mac { background: linear-gradient(160deg, #f7797d, #c471ed 50%, #12c2e9); }
+.theme-preview-mac .tp-bar { top: 0; height: 6px; background: rgba(255, 255, 255, 0.6); }
+.theme-preview-mac .tp-title { background: #ececec; }
+.theme-preview-ios { background: linear-gradient(160deg, #1d2b64, #f8cdda); }
+.theme-preview-ios .tp-window { left: 36%; top: 10%; width: 28%; height: 80%; border-radius: 6px; background: rgba(255, 255, 255, 0.25); }
+
+.settings-wallpapers { display: flex; flex-wrap: wrap; gap: 10px; }
+.settings-wallpaper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 78px;
+  padding: 4px;
+  border: 2px solid transparent;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--fg);
+  font: 11px var(--font);
+  cursor: pointer;
+}
+.settings-wallpaper.is-active { border-color: var(--accent); }
+.settings-wallpaper-swatch {
+  width: 64px;
+  height: 42px;
+  border-radius: 5px;
+  border: 1px solid var(--border);
+}
+.settings-about {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 6px 18px;
+  margin: 0;
+  font-size: 13px;
+}
+.settings-about dt { color: var(--fg-muted); }
+.settings-about dd { margin: 0; }

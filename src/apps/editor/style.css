@@ -1,0 +1,17 @@
+.editor {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.editor-text {
+  flex: 1;
+  resize: none;
+  border: 0;
+  outline: 0;
+  padding: 12px 14px;
+  font: 14px/1.55 var(--font-mono);
+  background: var(--input-bg);
+  color: var(--fg);
+  tab-size: 2;
+}
+.editor-position { margin-left: auto; }

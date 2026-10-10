@@ -1,0 +1,41 @@
+.paint {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  outline: none;
+}
+.paint-palette { gap: 4px; }
+.paint-color {
+  width: 30px;
+  height: 26px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: none;
+  cursor: pointer;
+}
+.paint-swatch {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  padding: 0;
+}
+.paint-swatch.is-active { outline: 2px solid var(--accent); outline-offset: 2px; }
+.paint-size { width: 90px; accent-color: var(--accent); }
+.paint-size-label { font-size: 12px; min-width: 34px; color: var(--fg-muted); }
+.paint-stage {
+  flex: 1;
+  overflow: auto;
+  padding: 16px;
+  background: var(--paint-stage-bg);
+}
+.paint-canvas {
+  display: block;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+  cursor: crosshair;
+  touch-action: none;
+}
+.paint-canvas[data-tool='fill'] { cursor: cell; }
+.paint-cursor { margin-left: auto; font-variant-numeric: tabular-nums; }

@@ -1,0 +1,333 @@
+/* Win95-style bevels. Bevel shadows are defined as tokens in styles/tokens.css. */
+
+[data-theme='retro'] body,
+[data-theme='retro'] #os {
+  font-size: 12px;
+}
+
+[data-theme='retro'] .desktop-icons {
+  bottom: 30px;
+}
+[data-theme='retro'] .desktop-icon {
+  border-radius: 0;
+  text-shadow: none;
+}
+[data-theme='retro'] .desktop-icon:hover {
+  background: none;
+}
+[data-theme='retro'] .desktop-icon.is-selected {
+  background: none;
+  border-color: transparent;
+}
+[data-theme='retro'] .desktop-icon.is-selected .desktop-icon-label {
+  background: #000080;
+  outline: 1px dotted #fff;
+}
+[data-theme='retro'] .desktop-icon.is-selected .icon {
+  filter: sepia(1) hue-rotate(190deg) saturate(4) brightness(0.6);
+}
+
+/* windows */
+[data-theme='retro'] .window {
+  padding: 3px;
+  border: 0;
+  background: #c0c0c0;
+  box-shadow: var(--bevel-raised);
+}
+[data-theme='retro'] .window-titlebar {
+  height: 20px;
+  gap: 4px;
+  padding: 0 2px 0 3px;
+  font-weight: bold;
+}
+[data-theme='retro'] .window:not(.is-focused) .window-titlebar {
+  background: linear-gradient(90deg, #808080, #b5b5b5);
+}
+[data-theme='retro'] .window-title {
+  font-size: 12px;
+}
+[data-theme='retro'] .window-controls {
+  align-self: center;
+  gap: 0;
+}
+[data-theme='retro'] .window-button {
+  width: 18px;
+  height: 16px;
+  background: #c0c0c0;
+  color: #000;
+  box-shadow: var(--bevel-raised);
+}
+[data-theme='retro'] .window-button .glyph {
+  width: 9px;
+  height: 9px;
+  stroke-width: 4;
+}
+[data-theme='retro'] .window-button:hover,
+[data-theme='retro'] .window-close:hover {
+  background: #c0c0c0;
+  color: #000;
+}
+[data-theme='retro'] .window-button:active {
+  box-shadow: var(--bevel-sunken);
+}
+[data-theme='retro'] .window-close {
+  margin-left: 2px;
+}
+[data-theme='retro'] .window-body {
+  margin-top: 2px;
+}
+
+/* controls */
+[data-theme='retro'] .btn {
+  height: 24px;
+  border: 0;
+  background: #c0c0c0;
+  box-shadow: var(--bevel-raised);
+  font-size: 12px;
+}
+[data-theme='retro'] .btn:active:not(:disabled) {
+  box-shadow: var(--bevel-sunken);
+}
+[data-theme='retro'] .btn:focus-visible {
+  outline: 1px dotted #000;
+  outline-offset: -5px;
+}
+[data-theme='retro'] .btn-tool,
+[data-theme='retro'] .btn-icon {
+  box-shadow: none;
+}
+[data-theme='retro'] .btn-tool:hover:not(:disabled),
+[data-theme='retro'] .btn-icon:hover:not(:disabled) {
+  box-shadow: inset -1px -1px #808080, inset 1px 1px #fff;
+}
+[data-theme='retro'] .btn-icon.is-active,
+[data-theme='retro'] .btn-tool.is-active {
+  background: #dfdfdf;
+  color: #000;
+  box-shadow: var(--bevel-sunken);
+}
+[data-theme='retro'] .btn-primary,
+[data-theme='retro'] .btn-danger {
+  color: #000;
+  outline: 1px solid #000;
+}
+[data-theme='retro'] .input {
+  border: 0;
+  box-shadow: var(--bevel-field);
+  font-size: 12px;
+}
+[data-theme='retro'] .input:focus {
+  box-shadow: var(--bevel-field);
+}
+[data-theme='retro'] .toolbar,
+[data-theme='retro'] .statusbar {
+  border-color: #808080;
+}
+[data-theme='retro'] .statusbar {
+  box-shadow: inset 1px 1px #808080, inset -1px -1px #fff;
+  color: #000;
+}
+
+/* menus & dialogs */
+[data-theme='retro'] .menu {
+  padding: 3px;
+  border: 0;
+  border-radius: 0;
+  box-shadow: var(--bevel-raised);
+  backdrop-filter: none;
+  animation: none;
+  font-size: 12px;
+}
+[data-theme='retro'] .menu-item {
+  border-radius: 0;
+}
+[data-theme='retro'] .menu-item:hover:not(:disabled) {
+  background: #000080;
+}
+[data-theme='retro'] .menu-separator {
+  height: 2px;
+  margin: 3px 2px;
+  background: none;
+  border-top: 1px solid #808080;
+  border-bottom: 1px solid #fff;
+}
+[data-theme='retro'] .dialog-backdrop {
+  background: none;
+}
+[data-theme='retro'] .dialog {
+  padding: 3px 3px 12px;
+  gap: 12px;
+  box-shadow: var(--bevel-raised);
+  animation: none;
+}
+[data-theme='retro'] .dialog-title {
+  padding: 3px 6px;
+  background: var(--titlebar-bg);
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+}
+[data-theme='retro'] .dialog-message,
+[data-theme='retro'] .dialog-input,
+[data-theme='retro'] .dialog-buttons {
+  margin-left: 12px;
+  margin-right: 12px;
+  width: auto;
+  color: #000;
+}
+
+/* taskbar */
+[data-theme='retro'] .taskbar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px;
+  background: #c0c0c0;
+  box-shadow: inset 0 1px #dfdfdf, inset 0 2px #fff;
+  user-select: none;
+}
+[data-theme='retro'] .start-button,
+[data-theme='retro'] .taskbar-window {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 24px;
+  padding: 0 6px;
+  border: 0;
+  background: #c0c0c0;
+  box-shadow: var(--bevel-raised);
+  font-size: 12px;
+  cursor: default;
+}
+[data-theme='retro'] .start-button {
+  font-weight: bold;
+}
+[data-theme='retro'] .start-button .glyph {
+  color: #000080;
+}
+[data-theme='retro'] .start-button.is-active,
+[data-theme='retro'] .taskbar-window.is-active {
+  box-shadow: var(--bevel-sunken);
+}
+[data-theme='retro'] .taskbar-window.is-active {
+  background: repeating-conic-gradient(#c0c0c0 0% 25%, #fff 0% 50%) 0 0 / 2px 2px;
+  font-weight: bold;
+}
+[data-theme='retro'] .taskbar-windows {
+  flex: 1;
+  display: flex;
+  gap: 3px;
+  min-width: 0;
+}
+[data-theme='retro'] .taskbar-window {
+  width: 160px;
+  min-width: 40px;
+  flex-shrink: 1;
+}
+[data-theme='retro'] .taskbar-window-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+[data-theme='retro'] .taskbar-tray {
+  display: flex;
+  align-items: center;
+  height: 24px;
+  padding: 0 10px;
+  box-shadow: inset 1px 1px #808080, inset -1px -1px #fff;
+}
+
+/* start menu */
+[data-theme='retro'] .start-menu {
+  position: absolute;
+  left: 2px;
+  z-index: 200;
+  display: none;
+  padding: 3px;
+  background: #c0c0c0;
+  box-shadow: var(--bevel-raised);
+  user-select: none;
+}
+[data-theme='retro'] .start-menu.is-open {
+  display: flex;
+}
+[data-theme='retro'] .start-banner {
+  display: flex;
+  align-items: flex-end;
+  width: 26px;
+  padding: 6px 0;
+  background: linear-gradient(0deg, #000080, #1084d0);
+  color: #c0c0c0;
+  font-size: 17px;
+  font-weight: bold;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+[data-theme='retro'] .start-items {
+  display: flex;
+  flex-direction: column;
+  min-width: 190px;
+}
+[data-theme='retro'] .start-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 34px;
+  padding: 0 10px 0 6px;
+  border: 0;
+  background: none;
+  font-size: 12px;
+  text-align: left;
+  cursor: default;
+}
+[data-theme='retro'] .start-item:hover {
+  background: #000080;
+  color: #fff;
+}
+
+/* apps */
+[data-theme='retro'] .explorer-sidebar,
+[data-theme='retro'] .explorer-content,
+[data-theme='retro'] .editor-text,
+[data-theme='retro'] .term {
+  box-shadow: var(--bevel-field);
+  border: 0;
+}
+[data-theme='retro'] .explorer-place .glyph {
+  color: #000;
+}
+[data-theme='retro'] .explorer-place.is-active .glyph {
+  color: #fff;
+}
+[data-theme='retro'] .calc-key {
+  box-shadow: var(--bevel-raised);
+  font-weight: normal;
+}
+[data-theme='retro'] .calc-op {
+  color: #800000;
+}
+[data-theme='retro'] .calc-op.is-active,
+[data-theme='retro'] .calc-key:active,
+[data-theme='retro'] .calc-key.is-pressed {
+  box-shadow: var(--bevel-sunken);
+  background: #c0c0c0;
+  color: #800000;
+  filter: none;
+}
+[data-theme='retro'] .calc-screen {
+  box-shadow: var(--bevel-field);
+}
+[data-theme='retro'] .settings-theme,
+[data-theme='retro'] .settings-wallpaper.is-active {
+  border: 0;
+  box-shadow: var(--bevel-raised);
+}
+[data-theme='retro'] .settings-theme.is-active {
+  box-shadow: var(--bevel-sunken);
+  background: #dfdfdf;
+}

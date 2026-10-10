@@ -1,0 +1,229 @@
+[data-theme='mac'] .desktop-icons {
+  top: 28px;
+  bottom: 84px;
+}
+[data-theme='mac'] .desktop-icon:hover {
+  background: none;
+}
+[data-theme='mac'] .desktop-icon.is-selected {
+  background: none;
+  border-color: transparent;
+}
+[data-theme='mac'] .desktop-icon.is-selected .desktop-icon-image {
+  background: rgba(0, 0, 0, 0.22);
+  border-radius: 6px;
+}
+[data-theme='mac'] .desktop-icon.is-selected .desktop-icon-label {
+  background: #0a84ff;
+  border-radius: 4px;
+  padding: 0 4px;
+  text-shadow: none;
+}
+
+/* menu bar */
+[data-theme='mac'] .menubar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 0 10px;
+  background: rgba(246, 246, 246, 0.72);
+  backdrop-filter: blur(30px) saturate(1.8);
+  -webkit-backdrop-filter: blur(30px) saturate(1.8);
+  color: #1d1d1f;
+  font-size: 13px;
+  user-select: none;
+}
+[data-theme='mac'] .menubar-item {
+  height: 22px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 5px;
+  background: none;
+  cursor: default;
+}
+[data-theme='mac'] .menubar-item .glyph {
+  display: block;
+}
+[data-theme='mac'] .menubar-item.is-open {
+  background: rgba(0, 0, 0, 0.1);
+}
+[data-theme='mac'] .menubar-app-name {
+  font-weight: 700;
+}
+[data-theme='mac'] .menubar-spacer {
+  flex: 1;
+}
+[data-theme='mac'] .menubar-clock {
+  padding: 0 8px;
+}
+
+/* dock */
+[data-theme='mac'] .dock-wrap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 6px;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+[data-theme='mac'] .dock {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 68px;
+  padding: 7px 8px;
+  background: rgba(255, 255, 255, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(24px) saturate(1.6);
+  -webkit-backdrop-filter: blur(24px) saturate(1.6);
+  pointer-events: auto;
+}
+[data-theme='mac'] .dock-item {
+  position: relative;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: default;
+  transform-origin: bottom center;
+  transition: transform 0.15s ease-out;
+}
+[data-theme='mac'] .dock-item:hover {
+  transform: scale(1.3) translateY(-4px);
+}
+[data-theme='mac'] .dock-item:active .icon {
+  filter: brightness(0.7);
+}
+[data-theme='mac'] .dock-item.is-running::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.7);
+  transform: translateX(-50%);
+}
+[data-theme='mac'] .dock-tooltip {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  padding: 3px 10px;
+  border-radius: 6px;
+  background: rgba(40, 40, 40, 0.85);
+  color: #fff;
+  font-size: 11px;
+  white-space: nowrap;
+  transform: translateX(-50%) scale(0.77);
+  transform-origin: bottom center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.1s;
+}
+[data-theme='mac'] .dock-item:hover .dock-tooltip {
+  opacity: 1;
+}
+
+/* windows: traffic lights on the left, title centred */
+[data-theme='mac'] .window-titlebar {
+  position: relative;
+  height: 30px;
+  padding: 0 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+[data-theme='mac'] .window-title {
+  position: absolute;
+  left: 80px;
+  right: 80px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  pointer-events: none;
+}
+[data-theme='mac'] .window-controls {
+  align-self: center;
+  gap: 8px;
+}
+[data-theme='mac'] .window-button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  color: transparent;
+  box-shadow: inset 0 0 0 0.5px rgba(0, 0, 0, 0.15);
+}
+[data-theme='mac'] .window-button .glyph {
+  width: 8px;
+  height: 8px;
+  stroke-width: 3.5;
+}
+[data-theme='mac'] .window-close,
+[data-theme='mac'] .window-close:hover {
+  background: #ff5f57;
+}
+[data-theme='mac'] .window-minimize,
+[data-theme='mac'] .window-minimize:hover {
+  background: #febc2e;
+}
+[data-theme='mac'] .window-maximize,
+[data-theme='mac'] .window-maximize:hover {
+  background: #28c840;
+}
+[data-theme='mac'] .window-controls:hover .window-button {
+  color: rgba(0, 0, 0, 0.55);
+}
+[data-theme='mac'] .window:not(.is-focused) .window-controls:not(:hover) .window-button {
+  background: #d6d6d6;
+}
+[data-theme='mac'] .window-controls .window-button:last-child {
+  border-radius: 50%;
+}
+
+/* menus */
+[data-theme='mac'] .menu {
+  padding: 5px;
+  border-radius: 8px;
+  border-color: rgba(0, 0, 0, 0.15);
+}
+[data-theme='mac'] .menu-item {
+  padding: 3px 10px 3px 4px;
+}
+[data-theme='mac'] .menubar-menu {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+[data-theme='mac'] .dialog {
+  border-radius: 12px;
+  text-align: center;
+}
+[data-theme='mac'] .dialog-buttons {
+  justify-content: center;
+}
+
+/* apps */
+[data-theme='mac'] .calc-key {
+  color: #fff;
+  border-radius: 50px;
+}
+[data-theme='mac'] .calc-op {
+  background: #ff9f0a;
+}
+[data-theme='mac'] .calc-op.is-active {
+  background: #fff;
+  color: #ff9f0a;
+}
+[data-theme='mac'] .window[data-app='calculator'] .window-titlebar {
+  background: #2c2c2e;
+  border-color: #2c2c2e;
+}
+[data-theme='mac'] .explorer-place .glyph {
+  color: var(--accent);
+}
